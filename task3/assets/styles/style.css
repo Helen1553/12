@@ -131,11 +131,9 @@
             }
 
             .main-section2_chat-itself{
-                display: grid;
-                grid-template-areas:
-                    "photo name"
-                    "comm comm";
-                justify-content: start;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
                 color:rgb(255, 255, 255);
             }
         }
@@ -153,22 +151,16 @@
     }
 }
 
-.Name {
-	grid-area: name;
-	color: #ffffff;
-	margin-left: 20px;
-	margin-top: 30px;
+.name {
+	color: whitesmoke;
 }
 
 .image{
-	grid-area: photo;
-	width: 60px;
-	height: 90px;
+    height: 5rem;
+    width: 5rem;
+    border: 1px solid black;
 }
 
 .newText {
-	grid-area: comm;
     color: whitesmoke;
-
-	margin-top: 10px;
 } 

@@ -1,14 +1,15 @@
-//Сначала находим необходимые элементы в html и сохраняем их в переменных
-const name1 = document.getElementById("name-input");
-const nameText = name1.value;
-
-const link = document.getElementById("link-input");
-const linkText = link.value;
-
-const comment = document.getElementById("comment-input");
-const commentText = comment.value;
 
 const addComment = () => {
+	//Сначала находим необходимые элементы в html и сохраняем их в переменных
+	const name1 = document.getElementById("name-input");
+	const nameText = name1.value;
+
+	const link = document.getElementById("link-input");
+	const linkText = link.value;
+
+	const comment = document.getElementById("comment-input");
+	const commentText = comment.value;
+
     //Удаляем пробелы в начале и в конце строки имени и сохраненяем результаты в переменную
 	const nameText2 = nameText.trim();
     //Приводим первую букву имени к верхнему регистру, а остальные буквы — к нижнему
@@ -20,26 +21,25 @@ const addComment = () => {
     // Создаём новый элемент - <div>, содержащий текст отформатированного имени
 	const divChat = document.createElement("div");
 	divChat.textContent = nameText3;
-	divChat.classList.add("Name");
+	divChat.classList.add("name");
+	chat.appendChild(divChat);
 
     // Создаём еще один элемент <div>, содержащий аватарку
 	const div2Chat = document.createElement("img");
 	div2Chat.src = linkText;
 	div2Chat.classList.add("image");
+	chat.appendChild(div2Chat);
 
 	const div3Chat = document.createElement("div");
 	div3Chat.textContent = commentText;
-
 	div3Chat.classList.add("newText");
-
-	chat.appendChild(divChat);
-	chat.appendChild(div2Chat);
 	chat.appendChild(div3Chat);
 
 	nameInput.value = "";
 	photoInput.value = "";
 	textInput.value = "";
 
+	//выполнение функции при нажатии на клавишу enter
     document.getElementById('btn').addEventListener('keypress', function(addComment) {
         if (event.key === 'Enter') {
             event.preventDefault();
