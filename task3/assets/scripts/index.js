@@ -30,12 +30,14 @@ const addComment = () => {
 	div2Chat.classList.add("image");
 	chat.appendChild(div2Chat);
 
+	// Создаём еще один элемент <div>, содержащий сам комментарий
 	const div3Chat = document.createElement("div");
 	div3Chat.textContent = commentTextReplace;
 	div3Chat.classList.add("newText");
 	chat.appendChild(div3Chat);
 
-	nameInput.value = "";
-	photoInput.value = "";
-	textInput.value = "";
+	//Код ниже реализует очистку всех полей ввода, чтобы подготовить их для следующего ввода
+	name1.value = "";
+	link.value = "";
+	comment.value = "";
 }

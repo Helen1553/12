@@ -1,9 +1,9 @@
 .grid-container{
     display: grid;
-    grid-template: 10% 1fr 10%/5% 1fr 5%;
+    grid-template: 10% 5% 1fr 5% 5%/5% 1fr 5%;
 
-    width: 100vw;
-    height: 100vh;
+    height: 97vh;
+    width: 99vw;
 
     background-color: #012132f4;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -11,17 +11,17 @@
 
     .header_grid-item{
         grid-area: 1/2/2/3;
-        border: solid white;
 
         .title{
             text-align: center;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0);
 
             color: whitesmoke;
         }
     }
 
     .main_grid-item{
-        grid-area: 2/2/3/3;
+        grid-area: 3/2/4/3;
 
         display: flex;
         flex-direction: row;
@@ -31,14 +31,16 @@
             flex-direction: column;
             gap: 2rem;
 
+            width: 55%;
 
-
-            width: 50%;
+            border-right: 2px dashed rgb(255, 255, 255);
 
             .main-section1_form-text{
                 height: 5%;
+
+                font-weight: bold;
                 color: whitesmoke;
-                text-decoration:underline;
+                text-shadow: 1.5px 1.5px 1.5px rgb(0, 0, 0);
             }
 
             .main-section1_form1{
@@ -121,13 +123,13 @@
         }
 
         .main-section2_chat{
-            border: solid rgb(0, 4, 255);
-
-            width: 50%;
+            margin-left: 2rem;
+            width: 45%;
 
             .main-section2_chat-text{
+                font-weight: bold;
                 color: whitesmoke;
-                text-decoration: underline;
+                text-shadow: 1.5px 1.5px 1.5px rgb(0, 0, 0);
             }
 
             .main-section2_chat-itself{
@@ -140,8 +142,7 @@
     }
 
     .footer_grid-item{
-        grid-area: 3/2/4/3;
-        border: solid rgb(255, 255, 255);
+        grid-area: 5/2/6/3;
 
         .footer_text{
             text-align: center;
