@@ -1,0 +1,49 @@
+//Сначала находим необходимые элементы в html и сохраняем их в переменных
+const name1 = document.getElementById("name-input");
+const nameText = name1.value;
+
+const link = document.getElementById("link-input");
+const linkText = link.value;
+
+const comment = document.getElementById("comment-input");
+const commentText = comment.value;
+
+const addComment = () => {
+    //Удаляем пробелы в начале и в конце строки имени и сохраненяем результаты в переменную
+	const nameText2 = nameText.trim();
+    //Приводим первую букву имени к верхнему регистру, а остальные буквы — к нижнему
+	const nameText3 = nameText2.charAt(0).toUpperCase() + nameText2.slice(1).toLowerCase();
+
+    //Здесь реализуется тот самый спам-фильтр: слово "shit" преобразуется в "xxx"; флаг gi указывает на нечувствительность к регистру и глобальный поиск
+	const commentTextReplace = commentText.replace(/shit|xxx/gi, "***");
+
+    // Создаём новый элемент - <div>, содержащий текст отформатированного имени
+	const divChat = document.createElement("div");
+	divChat.textContent = nameText3;
+	divChat.classList.add("Name");
+
+    // Создаём еще один элемент <div>, содержащий аватарку
+	const div2Chat = document.createElement("img");
+	div2Chat.src = linkText;
+	div2Chat.classList.add("image");
+
+	const div3Chat = document.createElement("div");
+	div3Chat.textContent = commentText;
+
+	div3Chat.classList.add("newText");
+
+	chat.appendChild(divChat);
+	chat.appendChild(div2Chat);
+	chat.appendChild(div3Chat);
+
+	nameInput.value = "";
+	photoInput.value = "";
+	textInput.value = "";
+
+    document.getElementById('btn').addEventListener('keypress', function(addComment) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            addComment();
+        }
+    });
+}
