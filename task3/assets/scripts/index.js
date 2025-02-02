@@ -31,19 +31,11 @@ const addComment = () => {
 	chat.appendChild(div2Chat);
 
 	const div3Chat = document.createElement("div");
-	div3Chat.textContent = commentText;
+	div3Chat.textContent = commentTextReplace;
 	div3Chat.classList.add("newText");
 	chat.appendChild(div3Chat);
 
 	nameInput.value = "";
 	photoInput.value = "";
 	textInput.value = "";
-
-	//выполнение функции при нажатии на клавишу enter
-    document.getElementById('btn').addEventListener('keypress', function(addComment) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            addComment();
-        }
-    });
 }
