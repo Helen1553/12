@@ -1,43 +1,46 @@
-
 const addComment = () => {
-	//Сначала находим необходимые элементы в html и сохраняем их в переменных
-	const name1 = document.getElementById("name-input");
-	const nameText = name1.value;
+	// Запишем в переменную текущее значение инпута (а для начала найдём все необходимые элементы в html)
+	const name = document.getElementById("name-input").value
+	const link = document.getElementById("link-input").value;
+	const comment = document.getElementById("comment-input").value;
 
-	const link = document.getElementById("link-input");
-	const linkText = link.value;
-
-	const comment = document.getElementById("comment-input");
-	const commentText = comment.value;
 
     //Удаляем пробелы в начале и в конце строки имени и сохраненяем результаты в переменную
-	const nameText2 = nameText.trim();
+	const name2 = name.trim();
     //Приводим первую букву имени к верхнему регистру, а остальные буквы — к нижнему
-	const nameText3 = nameText2.charAt(0).toUpperCase() + nameText2.slice(1).toLowerCase();
+	const name3 = name2.charAt(0).toUpperCase() + name2.slice(1).toLowerCase();
 
-    //Здесь реализуется тот самый спам-фильтр: слово "shit" преобразуется в "xxx"; флаг gi указывает на нечувствительность к регистру и глобальный поиск
-	const commentTextReplace = commentText.replace(/shit|xxx/gi, "***");
+
+	//Создаём массив возможных плохих словечек от пользователя
+	const badWords = ['fuck', 'fucking', 'shit', 'viagra', 'damn', 'bitch'];
+
+	// Создаём регулярное выражение для поиска всех плохих слов независимо от их регистра
+	const badWordsReplacement = new RegExp(`\\b(${badWords.join('|')})\\b`, 'gi');
+
+	// Заменяем все найденные плохие слова на звёздочки
+	const commentReplace = comment.replace(badWordsReplacement, (match) => '*'.repeat(match.length));
+
 
     // Создаём новый элемент - <div>, содержащий текст отформатированного имени
 	const divChat = document.createElement("div");
-	divChat.textContent = nameText3;
+	divChat.textContent = name3;
 	divChat.classList.add("name");
 	chat.appendChild(divChat);
 
     // Создаём еще один элемент <div>, содержащий аватарку
 	const div2Chat = document.createElement("img");
-	div2Chat.src = linkText;
+	div2Chat.src = link;
 	div2Chat.classList.add("image");
 	chat.appendChild(div2Chat);
 
 	// Создаём еще один элемент <div>, содержащий сам комментарий
 	const div3Chat = document.createElement("div");
-	div3Chat.textContent = commentTextReplace;
-	div3Chat.classList.add("newText");
+	div3Chat.textContent = commentReplace;
+	div3Chat.classList.add("comment");
 	chat.appendChild(div3Chat);
 
 	//Код ниже реализует очистку всех полей ввода, чтобы подготовить их для следующего ввода
-	name1.value = "";
-	link.value = "";
-	comment.value = "";
+	document.getElementById("name-input").value = "";
+	document.getElementById("link-input").value = "";
+	document.getElementById("comment-input").value = "";
 }
